@@ -1,0 +1,1 @@
+print("Succesfully Install Python!")

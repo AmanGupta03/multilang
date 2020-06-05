@@ -18,6 +18,8 @@
   },
   "homepage": "https://github.com/AmanGupta03/multilang#readme",
   "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
     "express": "^4.17.1"
   }
 }
