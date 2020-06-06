@@ -19,9 +19,7 @@ app.use((req, res, next) => {
 
 //routes
 app.post('/run', (req, res) => {
-  code = req.body.code
-  lang = req.body.lang 
-  vars = req.body.vars 
+  let {code,lang,vars} = req.body;
   res.send(execute(code, lang, vars, req.id))
 })
 
