@@ -37,25 +37,30 @@ const prepareCode = (code, lang, varObj) => {
 }
 
 
-const prepare = (code, lang, varObj, id) => {
+const prepare = async(code, lang, varObj, id) => {
   code = prepareCode(code, lang, varObj)
   let fileName = __dirname + `/space/${id}/prog` + langs.ext[lang]
-  fse.outputFile(fileName, code)
-    .then(() => {
-      console.log('file saved')
-      return fileName
-    })
-    .catch(err => console.log(err))
+  await fse.outputFile(fileName, code)
+  return fileName
 }
 
 
-exports.execute = (code, lang, varObj, id) => {
-  file = prepare(code, lang, varObj, id)
-  console.log(file)
+exports.execute = async(code, lang, varObj, id) => {
+  fileName = await prepare(code, lang, varObj, id)
+  console.log(fileName)
 }
+//   let fileName = __dirname + `/space/${id}/prog` + langs.ext[lang]
+//   fse.outputFile(fileName, code)
+//     .then(() => {
+//       console.log('saved')
+//     })
+//     .then(()=> {
+//       console.log('file name i know', fileName)
+//     })
+// }
 
 
-this.execute(body.code, body.lang, body.vars, '10')
+this.execute(body.code, body.lang, body.vars, '1')
 //console.log('done')
 // for (let key in varObj) {
 //   varObj[key] = JSON.stringify(varObj[key])
