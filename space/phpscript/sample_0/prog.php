@@ -1,3 +1,3 @@
 <?php
-echo "Succesfully Install PHP!";
+echo("Succesfully Install PHP!")
 ?>
