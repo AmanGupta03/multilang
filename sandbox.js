@@ -36,17 +36,17 @@ exports.execute = async(code, lang, varObj, id) => {
     fileDir = await prepare(code, lang, varObj, id)
     cmd = langs[lang].cmd(fileDir)
     console.log(fileDir, cmd)
-    result = await async(() => {
+    result = await new Promise((resolve, reject) => {
       exec(cmd, {timeout:tl, maxBuffer:maxbuf}, (error, stdout, stderr) => { 
         if (error) {
           msg = "tl/ml"
-          return {status:'error', output:msg}
+          resolve({status:'fail', output:msg})
         }
         else if (stderr) {
-          return {status: 'error', output:stderr}
+          resolve({status: 'fail', output:stderr})
         }
         else {
-          return {status:'success', output: stdout}
+          resolve({status:'success', output: stdout})
         }        
       })
     })
@@ -55,6 +55,6 @@ exports.execute = async(code, lang, varObj, id) => {
   }
   catch (error) {
     console.log(error)
-    return {status:'error', output:'something went wrong'}
+    return {status:'fail', output:'something went wrong'}
   }
 }
