@@ -6,21 +6,6 @@ const settings = require('./settings').settings
 const tl = settings.timeLimit
 const maxbuf = settings.maxBufferSize
 
-body = {
-  "code": "let a = '2', b = '3', c = 2, d = 3\nlet str = \"xyz\"\nlet x = `this is ${a}`\nk = $p+$q\nl = $r+$s\ncon = {val:k+l, stat:'p', 'con':3}\ncon\n\n",
-  "lang": "javascript",
-  "vars": {
-      "$p": "2",
-      "$q": "3",
-      "$r": 1,
-      "$s": 6,
-      "$obj": {
-          "con": "5",
-          "val": 7
-      }
-  }
-}
-
 
 const stringifyVarObj = (varObj) => {
   for (let key in varObj) {
@@ -54,7 +39,7 @@ exports.execute = async(code, lang, varObj, id) => {
     result = await new Promise((resolve, reject) => {
       exec(cmd, {timeout:tl, maxBuffer:maxbuf}, (error, stdout, stderr) => { 
         if (error) {
-          msg = "find"
+          msg = "tl/ml"
           resolve({status:'fail', output:msg})
         }
         else if (stderr) {
@@ -73,5 +58,3 @@ exports.execute = async(code, lang, varObj, id) => {
     return {status:'fail', output:'something went wrong'}
   }
 }
-
-this.execute(body.code, body.lang, body.vars, '1')

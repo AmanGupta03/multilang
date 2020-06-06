@@ -1,7 +1,7 @@
 const express = require('express')
 const cors = require('cors')
 const bodyParser = require('body-parser')
-//const sandbox = require('./sandbox') 
+const execute = require('./sandbox').execute 
 const { uuid } = require('uuidv4');
 
 const port =  process.env.PORT || '8000'
@@ -17,28 +17,12 @@ app.use((req, res, next) => {
   next()
 })
 
-app.get('/', (req, res) => {
-  res.send(req.id)
-})
 //routes
 app.post('/run', (req, res) => {
-  // console.log(req.body)
-  // console.log(req.id)
-  res.send(req.id)
-  // try {
-  //   let loc = sandbox.prepare(req.body.code, req.body.lang, req.body.vars)
-  //   console.log(loc)
-  //   res.send("done")
-  // }
-  // catch(e) {
-  //   console.log(e)
-  // }
-  // cmd = req.query.lang + ' ' + req.query.script   //command to run script
-
-  // exec(cmd, (error, stdout, stderr) => {
-  //   if (stderr) res.send({status:'fail', error:stderr})
-  //   res.send({status:'success', output:stdout})
-  // })
+  code = req.body.code
+  lang = req.body.lang 
+  vars = req.body.vars 
+  res.send(execute(code, lang, vars, req.id))
 })
 
 app.listen(port, () => console.log(`Listening at http://localhost:${port}`))
