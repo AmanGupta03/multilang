@@ -1,1 +1,0 @@
-print("Succesfully Install Python!")
