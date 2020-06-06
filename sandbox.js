@@ -24,8 +24,8 @@ const prepareCode = (code, lang, varObj) => {
 
 const prepare = async(code, lang, varObj, id) => {
   code = prepareCode(code, lang, varObj)
-  let fileDir = __dirname + `/space/${id}`
-  let fileName = fileDir + '/prog' + langs[lang].ext
+  const fileDir = __dirname + `/space/${id}`
+  const fileName = fileDir + '/prog' + langs[lang].ext
   await fse.outputFile(fileName, code)
   return fileDir
 }
@@ -34,27 +34,27 @@ const prepare = async(code, lang, varObj, id) => {
 exports.execute = async(code, lang, varObj, id) => {
   try {
     fileDir = await prepare(code, lang, varObj, id)
-    cmd = langs[lang].cmd(fileDir)
-    console.log(fileDir, cmd)
-    result = await new Promise((resolve, reject) => {
+    const cmd = langs[lang].cmd(fileDir)
+    return await new Promise((resolve, reject) => {
       exec(cmd, {timeout:tl, maxBuffer:maxbuf}, (error, stdout, stderr) => { 
-        if (error) {
-          msg = "tl/ml"
-          resolve({status:'fail', output:msg})
+        if (stderr) {
+          resolve({status: 'error', output:stderr})
         }
-        else if (stderr) {
-          resolve({status: 'fail', output:stderr})
+        else if (error) {
+          msg = (error.signal=='SIGTERM') ? 'time limit exceed':'runtime error'
+          resolve({status: 'error', output:msg})
         }
         else {
           resolve({status:'success', output: stdout})
         }        
       })
     })
-    console.log(result)
-    return result
   }
   catch (error) {
     console.log(error)
-    return {status:'fail', output:'something went wrong'}
+    return {status:'error', output:'something went wrong'}
+  }
+  finally {
+    fse.remove(fileDir)
   }
 }

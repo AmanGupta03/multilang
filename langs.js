@@ -12,7 +12,7 @@ exports.langs = {
           return code.substring(0, code.lastIndexOf('\n')) + '\n' + lastToken;
       },
     cmd: (dir) => {
-          return `docker run --rm --network=${net} --memory=${mem} --memory-swap=${mem} -v ${dir}:/prog python:3.8-slim-buster python /prog/prog.py`
+          return `docker run --rm  --network=${net} --memory=${mem} --memory-swap=${mem} -v ${dir}:/prog python:3.8-slim-buster python /prog/prog.py`
       }  
   },
 

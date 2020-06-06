@@ -18,11 +18,9 @@ app.use((req, res, next) => {
 })
 
 //routes
-app.post('/run', (req, res) => {
-  code = req.body.code
-  lang = req.body.lang 
-  vars = req.body.vars 
-  res.send(execute(code, lang, vars, req.id))
+app.post('/run', async(req, res) => {
+  const {code,lang,vars} = req.body;
+  res.send(await execute(code, lang, vars, req.id))
 })
 
 app.listen(port, () => console.log(`Listening at http://localhost:${port}`))
