@@ -26,7 +26,7 @@ exports.langs = {
           return code.substring(0, code.lastIndexOf("\n")) + '\n' + lastToken;
       },
     cmd: (dir) => {
-          return `docker run --rm --network=${net} --memory=${mem} --memory-swap=${mem} -v ${dir}:/prog node:10 node /prog/prog.js`;
+          return `docker run --rm --network=${net} --memory=${mem} --memory-swap=${mem} -v ${dir}:/prog node:14 node /prog/prog.js`;
       }
   },
   
