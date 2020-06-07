@@ -37,10 +37,10 @@ sudo apt-get install -y npm
 echo "NodeJS setup Complete"
 
 ###########################
-#Install dependency
+#Install dependencies
 ###########################
 sudo docker build .  #pull docker images for php, python, node
-sudo npm i  #install dependency from package.json
+sudo npm i  #install dependencies from package.json
 
 echo "Successfully install project dependencies"
 echo "Setup Completed"
