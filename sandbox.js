@@ -33,7 +33,7 @@ const prepare = async(code, lang, varObj, id) => {
 
 exports.execute = async(code, lang, varObj, id) => {
   try {
-    fileDir = await prepare(code, lang, varObj, id)
+    const fileDir = await prepare(code, lang, varObj, id)
     const cmd = langs[lang].cmd(fileDir)
     return await new Promise((resolve, reject) => {
       exec(cmd, {timeout:tl, maxBuffer:maxbuf}, (error, stdout, stderr) => { 
