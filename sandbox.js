@@ -35,7 +35,7 @@ exports.execute = async(code, lang, varObj, id) => {
   try {
     const fileDir = await prepare(code, lang, varObj, id)
     const cmd = langs[lang].cmd(fileDir)
-    result = await new Promise((resolve, reject) => {
+    const result = await new Promise((resolve, reject) => {
       exec(cmd, {timeout:tl, maxBuffer:maxbuf}, (error, stdout, stderr) => { 
         if (stderr) {
           resolve({status: 'error', output:stderr})
