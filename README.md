@@ -18,7 +18,7 @@
      For detailed description visit [https://www.serverlab.ca/tutorials/containers/docker/how-to-limit-memory-and-cpu-for-  docker-containers/] 
    
 
-* `node server.js` 
+* Start server by `node server.js` 
   - If everything has been setup correctly, you will see the following message on your terminal
   ```
   Running at http://0.0.0.0:8000
