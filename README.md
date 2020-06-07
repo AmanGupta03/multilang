@@ -20,9 +20,9 @@
 
 * Start server by `node server.js` 
   - If everything has been setup correctly, you will see the following message on your terminal
-  ```
-  Running at http://0.0.0.0:8000
-  ```
+    ```
+    Running at http://0.0.0.0:8000
+    ```
 
 ## Supported OS -:
 * Ubuntu 16.04, 18.04 LTS
