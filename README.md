@@ -24,5 +24,5 @@
     Running at http://0.0.0.0:8000
     ```
 
-## Supported OS -:
+## Supported OS
 * Ubuntu 16.04, 18.04 LTS
