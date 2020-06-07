@@ -51,10 +51,6 @@ exports.execute = async(code, lang, varObj, id) => {
     })
   }
   catch (error) {
-    console.log(error)
     return {status:'error', output:'something went wrong'}
-  }
-  finally {
-    fse.remove(fileDir)
   }
 }
