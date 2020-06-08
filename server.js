@@ -49,11 +49,13 @@ app.post('/runInFlow',async(req, res)=>{
 });
 
 app.post('/uploadCode', async(req, res)=>{
-  const id = req.body.id //code in string
-  const lang = req.body.lang //string
-  const code = req.body.code //flowid + stepid
-  const varObj = req.body.varObj
+  const {id,lang, code, varObj }= req.body
   const result = await codeSchema.updateOne({id:id},{$set:{code:code,lang:lang,varObj:varObj}},{upsert:true})
+  res.send(result)
+})
+
+app.get('/:id',,async(req,res)=>{
+  const result = await codeSchema.findOne({id:req.params.id})
   res.send(result)
 })
 
