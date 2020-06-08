@@ -40,22 +40,21 @@
 
 
 * **For uploading Script**
-- **http://52.249.249.121:5000/uploadCode**
-```
-{
-	"id":"5",
-    "varObj":["$a"],
-    "code":"<?php \n$value=$a; \n $a;?>",
-    "lang":"php"
+	- **http://52.249.249.121:5000/uploadCode**
+	```{
+    	"id":"5",
+    	"varObj":["$a"],
+    	"code":"<?php \n$value=$a; \n $a;?>",
+    	"lang":"php"
 	
-}
-```
+	}```
+	
 
 * **For running Script using its ID**
 - **http://52.249.249.121:5000/runInFlow**
 ```
 {
-	"id":"5",
+    "id":"5",
     "vars":{"$a":2}	
 }
 ```
