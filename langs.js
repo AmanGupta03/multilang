@@ -9,7 +9,7 @@ exports.langs = {
   python: {
     ext: '.py',
     addStdout : (code) => {
-          let lastToken = code.substring(code.lastIndexOf('\n') + 1).split(';')[0];
+          let lastToken = code.substring(code.lastIndexOf('\n') + 1).split(';').pop();
           lastToken = 'print(' + lastToken + ')';
           return code.substring(0, code.lastIndexOf('\n')) + '\n' + lastToken;
       },
@@ -21,7 +21,7 @@ exports.langs = {
   javascript: {
     ext: '.js',
     addStdout : (code) => {
-          let lastToken = code.substring(code.lastIndexOf('\n') + 1).split(';')[0];
+          let lastToken = code.substring(code.lastIndexOf('\n') + 1).split(';').pop();
           lastToken = 'console.log(' + lastToken + ')';
           return code.substring(0, code.lastIndexOf("\n")) + '\n' + lastToken;
       },
@@ -34,7 +34,7 @@ exports.langs = {
     ext: '.php',
     addStdout : (code) => {
           code = code.substring(0, code.lastIndexOf('?')).trim();
-          let lastToken = code.substring(code.lastIndexOf('\n') + 1).split(';')[0];
+          let lastToken = code.substring(code.lastIndexOf('\n') + 1).split(';').pop();
           lastToken = 'echo(' + lastToken + ')';
           return code.substring(0, code.lastIndexOf('\n')) + '\n' + lastToken + '\n?>';
       },
