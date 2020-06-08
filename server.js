@@ -54,7 +54,8 @@ app.post('/uploadCode', async(req, res)=>{
   const id = req.body.id //code in string
   const lang = req.body.lang //string
   const code = req.body.code //flowid + stepid
-  await codeSchema.update({id:id},{$set:{code:code,lang:lang}},{upsert:true})
+  const result = await codeSchema.updateOne({id:id},{$set:{code:code,lang:lang}},{upsert:true})
+  res.send(result)
 })
 
 app.get('/',async(req,res)=>{
