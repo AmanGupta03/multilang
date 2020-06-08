@@ -29,6 +29,7 @@
 
 ## API USAGE EXAMPLES
 * **for dry running any code**
+	- Post API
 	- **http://52.249.249.121:5000/dryRun**
 ```
 {
@@ -40,8 +41,10 @@
 
 
 * **For uploading Script**
+	- Post API
 	- **http://52.249.249.121:5000/uploadCode**
- ```{
+ ```
+ {
     	"id":"5",
     	"varObj":["$a"],
     	"code":"<?php \n$value=$a; \n $a;?>",
@@ -52,6 +55,7 @@
 	
 
 * **For running Script using its ID**
+	- Post API
 	- **http://52.249.249.121:5000/runInFlow**
 ```
 {
