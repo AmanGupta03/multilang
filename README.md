@@ -28,17 +28,20 @@
 * Ubuntu 16.04, 18.04 LTS
 
 ## API USAGE EXAMPLES
--**for dry running any code**
-**http://52.249.249.121:5000/dryRun**
+* **for dry running any code**
+- **http://52.249.249.121:5000/dryRun**
+```
 {
  "code":"a=$a  \n a; \n",
  "lang":"python",
  "vars":{"$a":2,"$b":3}
-}
+ }
+ ```
 
 
--**For uploading Script**
-**http://52.249.249.121:5000/uploadCode**
+* **For uploading Script**
+- **http://52.249.249.121:5000/uploadCode**
+```
 {
 	"id":"5",
     "varObj":["$a"],
@@ -46,10 +49,13 @@
     "lang":"php"
 	
 }
+```
 
--**For running Script using its ID**
-**http://52.249.249.121:5000/runInFlow**
+* **For running Script using its ID**
+- **http://52.249.249.121:5000/runInFlow**
+```
 {
 	"id":"5",
     "vars":{"$a":2}	
 }
+```
