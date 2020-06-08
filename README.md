@@ -27,7 +27,7 @@
 ## Supported OS
 * Ubuntu 16.04, 18.04 LTS
 
-## API USAGE EXAMPLES
+## API Usage Examples
 * **for dry running any code**
 	- Post API
 	- **http://52.249.249.121:5000/dryRun**
