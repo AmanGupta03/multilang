@@ -23,7 +23,7 @@ const stringifyVarObj = (varObj) => {
 */
 const prepareCode = (code, lang, varObj) => {
   varObj = stringifyVarObj(varObj);
-  console.log("varObj->",code)
+  console.log("varObj->",varObj)
   code = code.replace(/\$\w+\b/g, match => varObj[match]||match).trim();
   console.log("removed $->",code)
   return langs[lang].addStdout(code);
@@ -66,6 +66,7 @@ exports.execute = async(code, lang, varObj, id) => {
       });
     });
     await fse.remove(fileDir);
+    console.log("***Done***",Date(Date.now()))
     return result;
   }
   catch (error) {
