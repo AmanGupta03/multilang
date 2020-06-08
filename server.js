@@ -49,12 +49,18 @@ app.post('/runInFlow',async(req, res)=>{
    const vars = req.body.vars;
    res.send(await execute(code, lang, vars, req.id));
 });
-app.post('/uploadCode', async(req, res)=>{
-  const code = req.body.code //code in string
-  const lang = req.body.lang //string
-  const flowStepId = req.body._id //flowid + stepid
-//   save(req.body) in mongo
 
+app.post('/uploadCode', async(req, res)=>{
+  const id = req.body.id //code in string
+  const lang = req.body.lang //string
+  const code = req.body.code //flowid + stepid
+  await codeSchema.update({id:id},{$set:{code:code,lang:lang}},{upsert:true})
+})
+
+app.get('/',async(req,res)=>{
+   console.log('get api to see all codes')
+   const result = await codeSchema.find();
+   res.send(result);
 })
 
 app.listen(PORT, HOST, () => {
