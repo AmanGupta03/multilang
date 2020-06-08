@@ -43,10 +43,9 @@ app.post('/dryRun', async(req, res) => {
 });
 
 app.post('/runInFlow',async(req, res)=>{
-//   req.body._id will be id for the given code(flow id)
-//    const code = from DB
-//    const lang = from DB
-   const vars = req.body.vars;
+   const {id, vars} = req.body;
+   const result = await codeSchema.findOne({id=id})
+   const {code, lang} = result;
    res.send(await execute(code, lang, vars, req.id));
 });
 
