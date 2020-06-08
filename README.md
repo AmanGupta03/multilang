@@ -28,7 +28,7 @@
 * Ubuntu 16.04, 18.04 LTS
 
 ## API USAGE EXAMPLES
-**for dry running any code **
+-**for dry running any code**
 **http://52.249.249.121:5000/dryRun**
 {
  "code":"a=$a  \n a; \n",
@@ -37,7 +37,7 @@
 }
 
 
-**For uploading Script **
+-**For uploading Script**
 **http://52.249.249.121:5000/uploadCode**
 {
 	"id":"5",
@@ -47,7 +47,7 @@
 	
 }
 
-**For running Script using its ID **
+-**For running Script using its ID**
 **http://52.249.249.121:5000/runInFlow**
 {
 	"id":"5",
