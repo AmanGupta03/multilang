@@ -29,7 +29,7 @@
 
 ## API USAGE EXAMPLES
 * **for dry running any code**
-- **http://52.249.249.121:5000/dryRun**
+	- **http://52.249.249.121:5000/dryRun**
 ```
 {
  "code":"a=$a  \n a; \n",
@@ -41,17 +41,18 @@
 
 * **For uploading Script**
 	- **http://52.249.249.121:5000/uploadCode**
-	```{
+ ```{
     	"id":"5",
     	"varObj":["$a"],
     	"code":"<?php \n$value=$a; \n $a;?>",
     	"lang":"php"
 	
-	}```
+ }
+ ```
 	
 
 * **For running Script using its ID**
-- **http://52.249.249.121:5000/runInFlow**
+	- **http://52.249.249.121:5000/runInFlow**
 ```
 {
     "id":"5",
