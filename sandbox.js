@@ -23,7 +23,9 @@ const stringifyVarObj = (varObj) => {
 */
 const prepareCode = (code, lang, varObj) => {
   varObj = stringifyVarObj(varObj);
+  console.log("varObj->",code)
   code = code.replace(/\$\w+\b/g, match => varObj[match]||match).trim();
+  console.log("removed $->",code)
   return langs[lang].addStdout(code);
 }
 
@@ -32,7 +34,9 @@ const prepareCode = (code, lang, varObj) => {
     * this folder is mounted to our Docker container when we run it.
 */
 const prepare = async(code, lang, varObj, id) => {
+  console.log("initail->",code)
   code = prepareCode(code, lang, varObj);
+  console.log("final->",code)
   const fileDir = __dirname + `/space/${id}`;
   const fileName = fileDir + '/prog' + langs[lang].ext;
   await fse.outputFile(fileName, code);
