@@ -49,6 +49,7 @@ const prepare = async(code, lang, varObj, id) => {
 */
 exports.execute = async(code, lang, varObj, id) => {
   try {
+    console.log("***Started***",Date(Date.now()))
     const fileDir = await prepare(code, lang, varObj, id);
     const cmd = langs[lang].cmd(fileDir);
     const result = await new Promise((resolve, reject) => {

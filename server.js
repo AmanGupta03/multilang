@@ -37,14 +37,13 @@ app.use((req, res, next) => {
 
 //Routes
 app.post('/dryRun', async(req, res) => {
-  console.log("***Started***",Date(Date.now()))
   const {code,lang,vars} = req.body;
   res.send(await execute(code, lang, vars, req.id));
 });
 
 app.post('/runInFlow',async(req, res)=>{
    const {id, vars} = req.body;
-   const result = await codeSchema.findOne({id=id})
+   const result = await codeSchema.findOne({id:id})
    const {code, lang} = result;
    res.send(await execute(code, lang, vars, req.id));
 });
